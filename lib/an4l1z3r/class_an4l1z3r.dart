@@ -4,7 +4,7 @@ import 'dart:io';
 import 'abstract_an4l1z3r.dart';
 
 class An4l1z3r extends An4l1z3rBase {
-  An4l1z3r({required Directory raiz}) : super(raiz: raiz);
+  An4l1z3r({required super.raiz});
 
   @override
   void an4l1z3r() {
