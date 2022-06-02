@@ -12,7 +12,7 @@ void main() {
     });
 
     test('search files', () {
-      bool hasAn4l1z3r = true;
+      bool hasAn4l1z3r = false;
       bool hasReadme = false;
 
       final An4l1z3r an4l1z3r = An4l1z3r(raiz: Directory('.'));
