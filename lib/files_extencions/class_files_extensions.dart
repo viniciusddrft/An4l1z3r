@@ -2,7 +2,7 @@ class FileExtension {
   static const Map<String, String> extensionsLanguagens = {
     'dart': 'Dart',
     'c': 'C',
-    'cpp': 'C plus plus',
+    'cpp': 'C++',
     'py': 'Python',
     'rb': 'Ruby',
     'go': 'Go',

@@ -4,15 +4,12 @@ import 'package:an4l1z3r/an4l1z3r/class_an4l1z3r.dart';
 import 'package:an4l1z3r/report/class_report.dart';
 
 void main(List<String> arguments) {
-  late final String pathInit;
-
   if (arguments.isNotEmpty) {
-    pathInit = arguments[0];
+    final String pathInit = arguments[0];
     if (Directory(pathInit).existsSync()) {
       final An4l1z3r an4l1z3r = An4l1z3r(raiz: Directory(pathInit));
-      late final Report report;
       an4l1z3r.an4l1z3r();
-      report = Report(
+      final Report report = Report(
         allLinesProject: an4l1z3r.allLinesProject,
         typeFilesAndLines: an4l1z3r.typeFilesAndLines,
         allFiles: an4l1z3r.allFiles,
