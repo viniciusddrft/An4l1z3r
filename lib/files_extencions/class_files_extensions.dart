@@ -8,7 +8,9 @@ class FileExtension {
     'go': 'Go',
     'js': 'JavaScript',
     'php': 'PHP',
-    'java': 'Java'
+    'java': 'Java',
+    'rs': 'Rust',
+    'rlib': 'Rust',
   };
 
   static const List<String> extensionsImages = [
