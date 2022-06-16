@@ -8,13 +8,13 @@ class An4l1z3r extends An4l1z3rBase {
 
   @override
   void an4l1z3r() {
-    _searchDirectory(raiz);
+    _searchDirectory();
     _analiz3rFiles();
   }
 
-  void _searchDirectory(Directory directory) {
+  void _searchDirectory() {
     final List<FileSystemEntity> everythingInTheDirectory =
-        directory.listSync(recursive: true);
+        raiz.listSync(recursive: true);
 
     for (FileSystemEntity iten in everythingInTheDirectory) {
       if (iten is File) {
