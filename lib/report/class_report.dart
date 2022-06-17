@@ -1,16 +1,16 @@
-import 'abstract_report.dart';
-
 import '../files_extencions/class_files_extensions.dart';
+
+import 'abstract_report.dart';
 
 class Report extends ReportBase {
   const Report({
     required super.allLinesProject,
     required super.typeFilesAndLines,
-    required super.allFiles,
-    required super.allDirectorys,
-    required super.allImages,
-    required super.allAudios,
-    required super.allVideos,
+    required super.files,
+    required super.directorys,
+    required super.images,
+    required super.audios,
+    required super.videos,
     required super.numberOfUnrecognizedFiles,
   });
 
@@ -20,11 +20,11 @@ class Report extends ReportBase {
     print('-|-----------------RELATORIO--------------------------');
     print('-|----------------------------------------------------');
     print('-| Existem $allLinesProject linhas de código total no projeto');
-    print('-| Existem ${allFiles.length} Arquivos no projeto');
-    print('-| Existem ${allDirectorys.length} Diretorios no projeto');
-    print('-| Existem ${allImages.length} Arquivos de Imagem no projeto');
-    print('-| Existem ${allAudios.length} Arquivos de Audio no projeto');
-    print('-| Existem ${allVideos.length} Arquivos de Video no projeto');
+    print('-| Existem ${files.length} Arquivos no projeto');
+    print('-| Existem ${directorys.length} Diretorios no projeto');
+    print('-| Existem ${images.length} Arquivos de Imagem no projeto');
+    print('-| Existem ${audios.length} Arquivos de Audio no projeto');
+    print('-| Existem ${videos.length} Arquivos de Video no projeto');
 
     typeFilesAndLines.forEach((key, value) {
       if (FileExtension.extensionsLanguagens[key] != null) {

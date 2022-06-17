@@ -8,18 +8,7 @@ void main(List<String> arguments) {
     final String pathInit = arguments[0];
     if (Directory(pathInit).existsSync()) {
       final An4l1z3r an4l1z3r = An4l1z3r(raiz: Directory(pathInit));
-      an4l1z3r.an4l1z3r();
-      final Report report = Report(
-        allLinesProject: an4l1z3r.allLinesProject,
-        typeFilesAndLines: an4l1z3r.typeFilesAndLines,
-        allFiles: an4l1z3r.allFiles,
-        allDirectorys: an4l1z3r.allDirectorys,
-        allImages: an4l1z3r.allImages,
-        allAudios: an4l1z3r.allAudios,
-        allVideos: an4l1z3r.allVideos,
-        numberOfUnrecognizedFiles: an4l1z3r.numberOfUnrecognizedFiles,
-      );
-      report.showReport();
+      an4l1z3r.an4l1z3r().then((Report report) => report.showReport());
     } else {
       print('Esse diretorio não existe');
     }
