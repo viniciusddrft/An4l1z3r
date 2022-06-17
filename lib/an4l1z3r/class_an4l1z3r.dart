@@ -32,8 +32,8 @@ class An4l1z3r extends An4l1z3rBase {
     final ReceivePort receivePort = ReceivePort();
 
     await Isolate.spawn(_search, receivePort.sendPort);
-    final Map<String, List<FileSystemEntity>> data = await receivePort.first;
-    return data;
+
+    return await receivePort.first as Map<String, List<FileSystemEntity>>;
   }
 
   Future<Map<String, dynamic>> _createIsolateAn4l1z3rData(
@@ -41,8 +41,8 @@ class An4l1z3r extends An4l1z3rBase {
     final ReceivePort receivePort = ReceivePort();
     await Isolate.spawn(
         _analiz3rData, {'sendPort': receivePort.sendPort, 'files': files});
-    final Map<String, dynamic> data = await receivePort.first;
-    return data;
+
+    return await receivePort.first as Map<String, dynamic>;
   }
 
   void _search(SendPort sendPort) async {
