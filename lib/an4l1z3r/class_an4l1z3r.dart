@@ -4,13 +4,15 @@ import 'dart:isolate';
 
 import 'package:an4l1z3r/report/class_report.dart';
 
+import '../report/abstract_report.dart';
+
 import 'abstract_an4l1z3r.dart';
 
 class An4l1z3r extends An4l1z3rBase {
   An4l1z3r({required super.raiz});
 
   @override
-  Future<Report> an4l1z3r() async {
+  Future<ReportBase> an4l1z3r() async {
     final Map<String, List<FileSystemEntity>> filesAndDirectorys =
         await _createIsolateSearch();
 

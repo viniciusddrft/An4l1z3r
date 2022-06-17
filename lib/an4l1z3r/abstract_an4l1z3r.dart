@@ -1,15 +1,14 @@
 import 'dart:io';
 
-import 'package:an4l1z3r/report/class_report.dart';
-
 import '../files_extencions/class_files_extensions.dart';
+import '../report/abstract_report.dart';
 
 abstract class An4l1z3rBase {
   final Directory raiz;
 
   An4l1z3rBase({required this.raiz});
 
-  Future<Report> an4l1z3r();
+  Future<ReportBase> an4l1z3r();
 
   bool fileHasExtension(List<String> file) => file.length > 1;
 
