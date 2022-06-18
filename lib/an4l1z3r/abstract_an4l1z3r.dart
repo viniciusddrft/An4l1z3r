@@ -6,7 +6,7 @@ import '../report/abstract_report.dart';
 abstract class An4l1z3rBase {
   final Directory raiz;
 
-  An4l1z3rBase({required this.raiz});
+  const An4l1z3rBase({required this.raiz});
 
   Future<ReportBase> an4l1z3r();
 

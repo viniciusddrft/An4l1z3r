@@ -9,7 +9,7 @@ import '../report/abstract_report.dart';
 import 'abstract_an4l1z3r.dart';
 
 class An4l1z3r extends An4l1z3rBase {
-  An4l1z3r({required super.raiz});
+  const An4l1z3r({required super.raiz});
 
   @override
   Future<ReportBase> an4l1z3r() async {
