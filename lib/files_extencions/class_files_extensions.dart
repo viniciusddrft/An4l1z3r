@@ -11,6 +11,9 @@ class FileExtension {
     'java': 'Java',
     'rs': 'Rust',
     'rlib': 'Rust',
+    'html': 'Html',
+    'css': 'Css',
+    'cs': 'C#',
   };
 
   static const List<String> extensionsImages = [
