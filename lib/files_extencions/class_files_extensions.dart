@@ -9,6 +9,8 @@ class FileExtension {
     'js': 'JavaScript',
     'php': 'PHP',
     'java': 'Java',
+    'kt': 'Kotlin',
+    'kts': 'Kotlin',
     'rs': 'Rust',
     'rlib': 'Rust',
     'html': 'Html',
