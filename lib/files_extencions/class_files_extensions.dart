@@ -21,6 +21,8 @@ class FileExtension {
   static const List<String> extensionsImages = [
     'png',
     'jpg',
+    'jpeg',
+    'gif',
   ];
 
   static const List<String> extensionsVideos = [
