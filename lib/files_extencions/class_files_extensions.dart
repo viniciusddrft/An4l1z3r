@@ -23,6 +23,10 @@ class FileExtension {
     'jpg',
     'jpeg',
     'gif',
+    'bmp',
+    'psd',
+    'svg',
+    'tiff',
   ];
 
   static const List<String> extensionsVideos = [
