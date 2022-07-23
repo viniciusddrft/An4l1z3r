@@ -31,9 +31,19 @@ class FileExtension {
 
   static const List<String> extensionsVideos = [
     'mp4',
+    'mkv',
+    'mov',
+    'avi',
+    'flv',
+    'wmv',
   ];
 
   static const List<String> extensionsAudios = [
     'mp3',
+    'wma',
+    'ogg',
+    'aac',
+    'wav',
+    'pcm',
   ];
 }
