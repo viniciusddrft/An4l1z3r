@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
+import 'package:an4l1z3r/files_extencions/class_files_extensions.dart';
 import 'package:an4l1z3r/report/class_report.dart';
 
 import '../report/abstract_report.dart';
@@ -85,13 +86,18 @@ class An4l1z3r extends An4l1z3rBase {
           videos.add(file.path);
         } else {
           try {
-            if (typeFilesAndLines[filteredFile[1]] == null) {
-              typeFilesAndLines[filteredFile[1]] =
-                  file.readAsLinesSync(encoding: utf8).length;
+            if (typeFilesAndLines[
+                    FileExtension.extensionsLanguagens[filteredFile[1]]] ==
+                null) {
+              typeFilesAndLines[
+                  FileExtension.extensionsLanguagens[filteredFile[1]]
+                      as String] = file.readAsLinesSync(encoding: utf8).length;
             } else {
-              typeFilesAndLines[filteredFile[1]] =
-                  file.readAsLinesSync(encoding: utf8).length +
-                      typeFilesAndLines[filteredFile[1]]!;
+              typeFilesAndLines[
+                  FileExtension.extensionsLanguagens[filteredFile[1]]
+                      as String] = file.readAsLinesSync(encoding: utf8).length +
+                  typeFilesAndLines[
+                      FileExtension.extensionsLanguagens[filteredFile[1]]]!;
             }
             allLinesProject += file.readAsLinesSync(encoding: utf8).length;
           } catch (error) {

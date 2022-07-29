@@ -1,5 +1,3 @@
-import '../files_extencions/class_files_extensions.dart';
-
 import 'abstract_report.dart';
 
 class Report extends ReportBase {
@@ -26,12 +24,11 @@ class Report extends ReportBase {
     print('-| Existem ${audios.length} Arquivos de Audio no projeto');
     print('-| Existem ${videos.length} Arquivos de Video no projeto');
 
-    typeFilesAndLines.forEach((key, value) {
-      if (FileExtension.extensionsLanguagens[key] != null) {
-        print(
-            '-| Existem $value linhas de código na linguagem ${FileExtension.extensionsLanguagens[key]!}');
-      }
-    });
+    typeFilesAndLines.forEach(
+      (key, value) =>
+          print('-| Existem $value linhas de código na linguagem $key'),
+    );
+
     print(
         '-| Existem $numberOfUnrecognizedFiles Arquivos não reconhecidos no projeto :/');
     print('-|----------------------------------------------------');
