@@ -16,6 +16,8 @@ class FileExtension {
     'rb': 'Ruby',
     'go': 'Go',
     'js': 'JavaScript',
+    'ts': 'TypeScript',
+    'tsx': 'TypeScript',
     'php': 'PHP',
     'java': 'Java',
     'kt': 'Kotlin',
