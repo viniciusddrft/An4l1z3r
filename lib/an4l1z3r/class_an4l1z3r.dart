@@ -17,18 +17,19 @@ class An4l1z3r extends An4l1z3rBase {
     final Map<String, List<FileSystemEntity>> filesAndDirectorys =
         await _createIsolateSearch();
 
-    final Map<String, dynamic> data = await _createIsolateAn4l1z3rData(
+    final Map<String, Object> data = await _createIsolateAn4l1z3rData(
         filesAndDirectorys['files'] as List<File>);
 
     return Report(
-        files: filesAndDirectorys['files'] as List<File>,
-        directorys: filesAndDirectorys['directorys'] as List<Directory>,
-        allLinesProject: data['allLinesProject'],
-        numberOfUnrecognizedFiles: data['numberOfUnrecognizedFiles'],
-        typeFilesAndLines: data['typeFilesAndLines'],
-        images: data['images'],
-        audios: data['audios'],
-        videos: data['videos']);
+      files: filesAndDirectorys['files'] as List<File>,
+      directorys: filesAndDirectorys['directorys'] as List<Directory>,
+      allLinesProject: data['allLinesProject'] as int,
+      numberOfUnrecognizedFiles: data['numberOfUnrecognizedFiles'] as int,
+      typeFilesAndLines: data['typeFilesAndLines'] as Map<String, int>,
+      images: data['images'] as List<String>,
+      audios: data['audios'] as List<String>,
+      videos: data['videos'] as List<String>,
+    );
   }
 
   Future<Map<String, List<FileSystemEntity>>> _createIsolateSearch() async {
@@ -39,13 +40,13 @@ class An4l1z3r extends An4l1z3rBase {
     return await receivePort.first as Map<String, List<FileSystemEntity>>;
   }
 
-  Future<Map<String, dynamic>> _createIsolateAn4l1z3rData(
+  Future<Map<String, Object>> _createIsolateAn4l1z3rData(
       List<File> files) async {
     final ReceivePort receivePort = ReceivePort();
     await Isolate.spawn(
         _analiz3rData, {'sendPort': receivePort.sendPort, 'files': files});
 
-    return await receivePort.first as Map<String, dynamic>;
+    return await receivePort.first as Map<String, Object>;
   }
 
   void _search(SendPort sendPort) async {
@@ -66,7 +67,7 @@ class An4l1z3r extends An4l1z3rBase {
     Isolate.exit(sendPort, {'files': files, 'directorys': directorys});
   }
 
-  void _analiz3rData(Map<String, dynamic> data) {
+  void _analiz3rData(Map<String, Object> data) {
     final List<String> images = [];
     final List<String> audios = [];
     final List<String> videos = [];
@@ -74,7 +75,7 @@ class An4l1z3r extends An4l1z3rBase {
     int numberOfUnrecognizedFiles = 0;
     int allLinesProject = 0;
 
-    for (File file in data['files']) {
+    for (File file in data['files'] as List<File>) {
       final List<String> filteredFile = file.path.split('.');
 
       if (fileHasExtension(filteredFile)) {
@@ -106,7 +107,7 @@ class An4l1z3r extends An4l1z3rBase {
         }
       }
     }
-    Isolate.exit(data['sendPort'], {
+    Isolate.exit(data['sendPort'] as SendPort, {
       'allLinesProject': allLinesProject,
       'numberOfUnrecognizedFiles': numberOfUnrecognizedFiles,
       'typeFilesAndLines': typeFilesAndLines,
