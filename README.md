@@ -37,8 +37,8 @@
 make
 ```
 
-<p>existe um Makefile que fara tudo para você basta rodar esse comando, ele vai gerar um 
-an4l1z3r.exe e basta usar ele da seguinte forma</p>
+<p>existe um Makefile que fara tudo para você basta rodar esse comando, ele vai gerar um
+diretorio build com o an4l1z3r.exe dentro e basta usar ele da seguinte forma</p>
 
 ```bash
 ./an4l1z3r.exe pathYourFolder
