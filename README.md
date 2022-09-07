@@ -6,7 +6,7 @@
 
 <p>exemplo abaixo:</p>
 
-<img src="assets/1.png" width= 700>
+<img src="assets/readme.png" width= 700>
 
 
 <p>informações que o An4l1z3r fornece</p>
