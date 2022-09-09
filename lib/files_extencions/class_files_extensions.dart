@@ -28,6 +28,7 @@ class FileExtension {
     'html': 'Html',
     'css': 'Css',
     'cs': 'C#',
+    'yaml': 'Yaml',
   };
 
   static const List<String> extensionsImages = [
