@@ -29,6 +29,7 @@ class FileExtension {
     'css': 'Css',
     'cs': 'C#',
     'yaml': 'Yaml',
+    'xml': 'Xml'
   };
 
   static const List<String> extensionsImages = [
