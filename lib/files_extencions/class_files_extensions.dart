@@ -27,6 +27,7 @@ class FileExtension {
     'rlib': 'Rust',
     'html': 'Html',
     'css': 'Css',
+    'scss': 'Scss',
     'cs': 'C#',
     'yaml': 'Yaml',
     'xml': 'Xml'
