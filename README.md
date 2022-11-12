@@ -1,4 +1,4 @@
-# An4l1z3r 
+# An4l1z3r  
 
 ## feito para analizar seu código de maneira automatizada e te entregar as informações
 
@@ -7,7 +7,6 @@
 <p>exemplo abaixo:</p>
 
 <img src="assets/readme.png" width= 700>
-
 
 <p>informações que o An4l1z3r fornece</p>
 <ul>
