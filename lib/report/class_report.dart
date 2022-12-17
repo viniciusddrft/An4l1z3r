@@ -25,8 +25,8 @@ class Report extends ReportBase {
     print('-| Existem ${videos.length} Arquivos de Video no projeto');
 
     typeFilesAndLines.forEach(
-      (key, value) =>
-          print('-| Existem $value linhas de código na linguagem $key'),
+      (key, value) => print(
+          '-| Existem $value linhas de código na linguagem $key | ${((value * 100) / allLinesProject).toStringAsFixed(2)}% do projeto'),
     );
 
     print(

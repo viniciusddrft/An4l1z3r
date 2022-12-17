@@ -101,6 +101,8 @@ class An4l1z3r extends An4l1z3rBase {
                       FileExtension.extensionsLanguagens[filteredFile[1]]]!;
             }
             allLinesProject += file.readAsLinesSync(encoding: utf8).length;
+          } on FileSystemException catch (_) {
+            numberOfUnrecognizedFiles += 1;
           } on TypeError catch (_) {
             numberOfUnrecognizedFiles += 1;
           } catch (erro, stackTrace) {
