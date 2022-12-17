@@ -77,22 +77,35 @@ class An4l1z3r extends An4l1z3rBase {
 
     for (File file in data['files'] as List<File>) {
       final List<String> filteredFile = file.path.split('.');
-      if (filteredFile.length == 1 &&
-          filteredFile.first.split('/').last.isNotEmpty) {
-        if (typeFilesAndLines[FileExtension
-                .extensionsLanguagens[filteredFile.first.split('/').last]] ==
-            null) {
-          typeFilesAndLines[FileExtension
-                  .extensionsLanguagens[filteredFile.first.split('/').last]
-              as String] = file.readAsLinesSync(encoding: utf8).length;
-        } else {
-          typeFilesAndLines[
-              FileExtension
-                      .extensionsLanguagens[filteredFile.first.split('/').last]
-                  as String] = file.readAsLinesSync(encoding: utf8).length +
-              typeFilesAndLines[FileExtension
-                  .extensionsLanguagens[filteredFile.first.split('/').last]]!;
+
+      try {
+        if (filteredFile.length == 1 &&
+            filteredFile.first.split('/').last.isNotEmpty) {
+          if (typeFilesAndLines[FileExtension
+                  .extensionsLanguagens[filteredFile.first.split('/').last]] ==
+              null) {
+            typeFilesAndLines[FileExtension
+                    .extensionsLanguagens[filteredFile.first.split('/').last]
+                as String] = file.readAsLinesSync(encoding: utf8).length;
+            allLinesProject += file.readAsLinesSync(encoding: utf8).length;
+          } else {
+            typeFilesAndLines[FileExtension
+                    .extensionsLanguagens[filteredFile.first.split('/').last]
+                as String] = file
+                    .readAsLinesSync(encoding: utf8)
+                    .length +
+                typeFilesAndLines[FileExtension
+                    .extensionsLanguagens[filteredFile.first.split('/').last]]!;
+            allLinesProject += file.readAsLinesSync(encoding: utf8).length;
+          }
         }
+      } on FileSystemException catch (_) {
+        numberOfUnrecognizedFiles += 1;
+      } on TypeError catch (_) {
+        numberOfUnrecognizedFiles += 1;
+      } catch (erro, stackTrace) {
+        print(erro);
+        print(stackTrace);
       }
 
       if (fileHasExtension(filteredFile)) {
