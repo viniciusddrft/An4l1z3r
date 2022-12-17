@@ -18,6 +18,7 @@
 <li>Número de videos usados</li>
 <li>Número de linhas em cada linguagem</li>
 <li>Número de arquivos não recinhecidos(arquivos não reconhecidos são arquivos que o an4l1z3r não sabe como classificar exemplo se uma imagem tiver com uma extensão errada .pmg esse arquivo sera dado como não reconhecido)</li>
+<li>Pocentagem de cada linguagem usada </li>
 </ul>
 <br>
 <p>No momento ele reconhece poucos tipos de arquivos no seu projeto, mas em breve será adicionado mais ;)</p>

@@ -30,7 +30,11 @@ class FileExtension {
     'scss': 'Scss',
     'cs': 'C#',
     'yaml': 'Yaml',
-    'xml': 'Xml'
+    'xml': 'Xml',
+    'Makefile': 'Makefile',
+    'MakeFile': 'Makefile',
+    'Dockerfile': 'dockerfile',
+    'DockerFile': 'dockerfile',
   };
 
   static const List<String> extensionsImages = [
