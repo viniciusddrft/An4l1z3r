@@ -27,7 +27,7 @@
 
 ## como usar
 
-<p> primeiramente você precisa do dart instalado, não vou entrar em como fazer isso, partindo dai existem 2 opções compilar o an4l1z3r ou executar pelo prorio dart.</p>
+<p> primeiramente você precisa do dart instalado, não vou entrar em como fazer isso, partindo dai existem 2 opções compilar o an4l1z3r ou executar pelo proprio dart.</p>
 
 <hr>
 
