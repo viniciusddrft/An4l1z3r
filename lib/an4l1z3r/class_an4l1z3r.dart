@@ -1,12 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
-
-import 'package:an4l1z3r/files_extencions/class_files_extensions.dart';
-import 'package:an4l1z3r/report/class_report.dart';
-
+import '../files_extencions/class_files_extensions.dart';
 import '../report/abstract_report.dart';
-
+import '../report/class_report.dart';
 import 'abstract_an4l1z3r.dart';
 
 class An4l1z3r extends An4l1z3rBase {
@@ -14,42 +11,32 @@ class An4l1z3r extends An4l1z3rBase {
 
   @override
   Future<ReportBase> an4l1z3r() async {
-    final Map<String, List<FileSystemEntity>> filesAndDirectorys =
-        await _createIsolateSearch();
-
-    final Map<String, Object> data = await _createIsolateAn4l1z3rData(
-        filesAndDirectorys['files'] as List<File>);
+    final allData = await Isolate.run<Map<String, Object>>(
+      () async {
+        final filesAndDirectorys = await _search();
+        final allData = _analiz3rData(
+            filesAndDirectorys['files'] as List<FileSystemEntity>);
+        allData.addAll({
+          'files': filesAndDirectorys['files']!,
+          'directorys': filesAndDirectorys['directorys']!
+        });
+        return allData;
+      },
+    );
 
     return Report(
-      files: filesAndDirectorys['files'] as List<File>,
-      directorys: filesAndDirectorys['directorys'] as List<Directory>,
-      allLinesProject: data['allLinesProject'] as int,
-      numberOfUnrecognizedFiles: data['numberOfUnrecognizedFiles'] as int,
-      typeFilesAndLines: data['typeFilesAndLines'] as Map<String, int>,
-      images: data['images'] as List<String>,
-      audios: data['audios'] as List<String>,
-      videos: data['videos'] as List<String>,
+      files: allData['files'] as List<File>,
+      directorys: allData['directorys'] as List<Directory>,
+      allLinesProject: allData['allLinesProject'] as int,
+      numberOfUnrecognizedFiles: allData['numberOfUnrecognizedFiles'] as int,
+      typeFilesAndLines: allData['typeFilesAndLines'] as Map<String, int>,
+      images: allData['images'] as List<String>,
+      audios: allData['audios'] as List<String>,
+      videos: allData['videos'] as List<String>,
     );
   }
 
-  Future<Map<String, List<FileSystemEntity>>> _createIsolateSearch() async {
-    final ReceivePort receivePort = ReceivePort();
-
-    await Isolate.spawn(_search, receivePort.sendPort);
-
-    return await receivePort.first as Map<String, List<FileSystemEntity>>;
-  }
-
-  Future<Map<String, Object>> _createIsolateAn4l1z3rData(
-      List<File> files) async {
-    final ReceivePort receivePort = ReceivePort();
-    await Isolate.spawn(
-        _analiz3rData, {'sendPort': receivePort.sendPort, 'files': files});
-
-    return await receivePort.first as Map<String, Object>;
-  }
-
-  void _search(SendPort sendPort) async {
+  Future<Map<String, List<FileSystemEntity>>> _search() async {
     final List<FileSystemEntity> everythingInTheDirectory =
         raiz.listSync(recursive: true);
 
@@ -64,10 +51,10 @@ class An4l1z3r extends An4l1z3rBase {
       }
     }
 
-    Isolate.exit(sendPort, {'files': files, 'directorys': directorys});
+    return {'files': files, 'directorys': directorys};
   }
 
-  void _analiz3rData(Map<String, Object> data) {
+  Map<String, Object> _analiz3rData(List<FileSystemEntity> files) {
     final List<String> images = [];
     final List<String> audios = [];
     final List<String> videos = [];
@@ -75,7 +62,7 @@ class An4l1z3r extends An4l1z3rBase {
     int numberOfUnrecognizedFiles = 0;
     int allLinesProject = 0;
 
-    for (File file in data['files'] as List<File>) {
+    for (File file in files as List<File>) {
       final List<String> filteredFile = file.path.split('.');
 
       try {
@@ -142,13 +129,13 @@ class An4l1z3r extends An4l1z3rBase {
         }
       }
     }
-    Isolate.exit(data['sendPort'] as SendPort, {
+    return {
       'allLinesProject': allLinesProject,
       'numberOfUnrecognizedFiles': numberOfUnrecognizedFiles,
       'typeFilesAndLines': typeFilesAndLines,
       'images': images,
       'audios': audios,
       'videos': videos,
-    });
+    };
   }
 }

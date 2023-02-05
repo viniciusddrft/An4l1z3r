@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import '../files_extencions/class_files_extensions.dart';
 import '../report/abstract_report.dart';
 
