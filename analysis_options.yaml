@@ -15,7 +15,13 @@ include: package:lints/recommended.yaml
 
 # Uncomment the following section to specify additional rules.
 
-# linter:
+linter:
+  rules:
+    always_declare_return_types: true
+    unnecessary_await_in_return: true
+    prefer_single_quotes: true
+    prefer_final_locals: true
+    avoid_unused_constructor_parameters: true
 #   rules:
 #     - camel_case_types
 

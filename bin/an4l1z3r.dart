@@ -5,9 +5,9 @@ import 'package:an4l1z3r/report/abstract_report.dart';
 
 void main(List<String> arguments) {
   if (arguments.isNotEmpty) {
-    final Directory directoryInit = Directory(arguments[0]);
+    final directoryInit = Directory(arguments[0]);
     if (directoryInit.existsSync()) {
-      final An4l1z3r an4l1z3r = An4l1z3r(raiz: directoryInit);
+      final an4l1z3r = An4l1z3r(raiz: directoryInit);
       an4l1z3r.an4l1z3r().then(
             (ReportBase reportBase) => reportBase.showReport(),
           );
