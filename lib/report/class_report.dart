@@ -1,6 +1,6 @@
 import 'abstract_report.dart';
 
-class Report extends ReportBase {
+final class Report extends ReportBase {
   const Report({
     required super.allLinesProject,
     required super.typeFilesAndLines,

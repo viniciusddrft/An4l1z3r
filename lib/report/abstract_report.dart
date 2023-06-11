@@ -1,6 +1,6 @@
 import 'dart:io';
 
-abstract class ReportBase {
+abstract base class ReportBase {
   final List<File> files;
   final List<Directory> directorys;
   final int allLinesProject;

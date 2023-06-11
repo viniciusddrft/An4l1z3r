@@ -6,7 +6,7 @@ import '../report/abstract_report.dart';
 import '../report/class_report.dart';
 import 'abstract_an4l1z3r.dart';
 
-class An4l1z3r extends An4l1z3rBase {
+final class An4l1z3r extends An4l1z3rBase {
   const An4l1z3r({required super.raiz});
 
   @override

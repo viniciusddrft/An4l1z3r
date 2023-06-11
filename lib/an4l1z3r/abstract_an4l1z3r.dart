@@ -2,7 +2,7 @@ import 'dart:io';
 import '../files_extencions/class_files_extensions.dart';
 import '../report/abstract_report.dart';
 
-abstract class An4l1z3rBase {
+abstract base class An4l1z3rBase {
   final Directory raiz;
 
   const An4l1z3rBase({required this.raiz});
