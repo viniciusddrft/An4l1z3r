@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 void main() {
   group('An4l1z3r', () {
     test('search diretory', () {
-      final An4l1z3r an4l1z3r = An4l1z3r(raiz: Directory('.'));
+      final an4l1z3r = An4l1z3r(raiz: Directory('.'));
 
       expect(an4l1z3r.raiz.path, '.');
     });
@@ -16,7 +16,7 @@ void main() {
       bool hasAn4l1z3r = false;
       bool hasReadme = false;
 
-      final An4l1z3r an4l1z3r = An4l1z3r(raiz: Directory('.'));
+      final an4l1z3r = An4l1z3r(raiz: Directory('.'));
       await an4l1z3r.an4l1z3r().then((ReportBase reportBase) {
         for (File file in reportBase.files) {
           if (file.path == './bin/an4l1z3r.dart') {

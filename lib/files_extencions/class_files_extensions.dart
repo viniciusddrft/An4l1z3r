@@ -31,6 +31,7 @@ class FileExtension {
     'cs': 'C#',
     'yaml': 'Yaml',
     'xml': 'Xml',
+    'swift': 'Swift',
     'Makefile': 'Makefile',
     'MakeFile': 'Makefile',
     'Dockerfile': 'dockerfile',
