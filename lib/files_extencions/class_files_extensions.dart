@@ -13,6 +13,7 @@ class FileExtension {
     'hxx': 'C++',
     'h++': 'C++',
     'py': 'Python',
+    'gd': 'GDscript',
     'rb': 'Ruby',
     'go': 'Go',
     'js': 'JavaScript',
